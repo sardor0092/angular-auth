@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SiginComponent } from './sigin/sigin.component';
 import { SigupComponent } from './sigup/sigup.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import {HttpClientModule} from '@angular/common/http'
+
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
