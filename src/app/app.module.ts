@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { SiginComponent } from './sigin/sigin.component';
 import { SigupComponent } from './sigup/sigup.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
+import { AuthInterceptor } from './shared/authconfig.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -15,14 +18,37 @@ import {HttpClientModule} from '@angular/common/http'
     AppComponent,
     SiginComponent,
     SigupComponent,
-    UserProfilComponent
+    UserProfilComponent,
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    
+    ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+      
+    // CoreModule,
+   
+
+    
+    
+    
   ],
-  providers: [],
+  providers: [
+
+    {
+
+      
+    
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
+
+    }
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
